@@ -27,6 +27,16 @@ app.post("/signup", async(req, res)=>{
     }
 })
 
+// Read Operation
+app.get("/signup", async(req, res)=>{
+    try {
+        const signup = await signUpModel.find()
+        console.log(signup);
+        res.render("index", {signup: signup})
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 
 const port = '8080'
