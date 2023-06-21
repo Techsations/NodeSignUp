@@ -16,8 +16,11 @@ const userSchema = new mongoose.Schema({
 
 const signUpModel = mongoose.models.users_tbs || mongoose.model("user_tbs", userSchema)
 
+// create operation
+
+
 const port = '8080'
-const uri = "mongodb+srv://Techsation:Playmanjamb78@cluster0.atmrqxr.mongodb.net/nodeClass_?retryWrites=true&w=majority"
+const uri = "mongodb+srv://Techsation:Playmanjamb78@cluster0.atmrqxr.mongodb.net/nodeSignUp?retryWrites=true&w=majority"
 const connect = async ()=>{
   mongoose.set("strictQuery", false)
   await mongoose.connect(uri).then(()=>{
