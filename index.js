@@ -7,6 +7,11 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const port = "8080";
+
+const userSchema = new mongoose.Schema({
+    username: {type: String},
+    email: {type: String, required: true, unique: true},
+    password: {type: String, required: true}
+})
 
 const signUpModel = mongoose.models.users_tbs || mongoose.model("user_tbs", userSchema)
