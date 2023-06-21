@@ -17,6 +17,16 @@ const userSchema = new mongoose.Schema({
 const signUpModel = mongoose.models.users_tbs || mongoose.model("user_tbs", userSchema)
 
 // create operation
+app.post("/signup", async(req, res)=>{
+    try {
+        const result = await signUpModel.create({username, email, password})
+        console.log(result);
+        res.redirect("/signup")
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 
 
 const port = '8080'
