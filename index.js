@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 const userSchema = new mongoose.Schema({
-    username: {type: String},
+    username: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true}
 })
@@ -18,6 +18,7 @@ const signUpModel = mongoose.models.users_tbs || mongoose.model("user_tbs", user
 
 // create operation
 app.post("/signup", async(req, res)=>{
+    const {username, email, password} = req.body
     try {
         const result = await signUpModel.create({username, email, password})
         console.log(result);
